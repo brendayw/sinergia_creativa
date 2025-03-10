@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primario: #87a2c8;
+    --secundario: #414854;
+    --terciario: #f74b94;
+    --cuaternario: #ebeefc;
+    --quinto: #fcc7de;
+    --blanco: #fff;
+}
+
+/* GENERALES */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", serif;
+    color: var(--blanco);
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.menu_dashboard {
+    max-width: 75px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--secundario);
+    padding: 10px;
+    transition: max-width .3s ease;
+}
+
+.top_menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top_menu .logo {
+    display: flex;
+    align-items: center;
+}
+
+.top_menu  .logo img {
+    width: 30px;
+    transition: width .3s ease;
+}
+
+.top_menu  .logo span {
+    font-size: 15px;
+    margin-left: 20px;
+    display: none;
+    font-weight: bold;
+}
+
+.top_menu  .toggle {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.top_menu  .toggle i {
+    font-size: 25px;
+    color: var(--primario);
+}
+
+/* INPUT BOX */
+.input_search {
+    width: 100%;
+    margin: 25px 0;
+    background-color: #666c75;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.input_search i {
+    font-size: 25px;
+    margin-right: 25px;
+    color: var(--primario);
+}
+
+.input_search .input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 30px;
+    color: var(--white);
+    font-size: 15px;
+    display: none;
+}
+
+.input_search .input::placeholder {
+    color: #ffffff83;
+}
+
+/* ENLACES MENU */
+.menu .enlace {
+    width: 100%;
+    height: 70px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+
+.menu .enlace i {
+    font-size: 20px;
+    margin-top: 20px;
+    color: var(--primario);
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.menu .enlace span {
+    opacity: 0;
+    transition: opacity .3s ease;
+    margin-left: 50px;
+    
+}
+
+.menu_dashboard.open .menu .enlace {
+    padding: 5px;
+    width: auto;
+}
+
+.menu_dashboard.open .menu .enlace i {
+    margin-bottom: 5px;
+    padding: 0.5rem;
+}
+
+.menu_dashboard.open .menu .enlace span {
+    opacity: 1;
+    position: relative;
+    top: -30px;
+    font-size: 15px;
+}
+
+.menu_dashboard.open {
+    max-width: 250px;
+}
+
+.menu_dashboard.open .top_menu .logo span {
+    display: block;
+}
+
+.menu_dashboard.open .input_search .input {
+    display: block;
+}
+
+.menu .enlace:hover {
+    background: #666c75;
+}
+
+.link_menu {
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+}
+
+/*opcion para que se mantenga seleccionado*/
+.menu .enlace.active {
+    background: var(--white);
+    color: var(--text-light);
+    width: 100px;
+}
+
+.menu .enlace.active a {
+    color: var(--text-light); /* Estilo para el texto cuando el enlace esté activo */
+}
+.menu .enlace.active i {
+    color: var(--text-light); /* Estilo para el texto cuando el enlace esté activo */
+}
+
+button {
+    text-decoration: none;
+    border: none;
+}
+
+@media (min-width: 769px) {
+    .menu_dashboard {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        background-color: var(--secundario);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    /* Ajuste de los enlaces dentro del menú */
+    .menu .enlace {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 20px;
+        font-size: 18px;
+        transition: all .3s ease;
+    }
+
+    .menu .enlace i {
+        font-size: 25px;
+        color: var(--primario);
+    }
+
+    .menu_dashboard.open .menu .enlace span {
+        display: block;
+    }
+
+    .menu_dashboard.open {
+        max-width: 200px;
+    }
+
+    .menu_dashboard.open .top_menu .logo span {
+        display: block;
+    }
+
+    .menu_dashboard.open .input_search .input {
+        display: block;
+    }
+
+    .menu .enlace:hover {
+        background: #666c75;
+    }
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .top_menu,
+    .toggle i,
+    .input_search,
+    .input_search i,
+    #logout {
+        display: none;
+    }
+
+    .menu_dashboard {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        width: 100%;
+    }
+
+    .menu .enlace {
+        padding: 0 10px;
+        width: 50px;
+    }
+
+    .menu .enlace i {
+        font-size: 30px;
+        color: var(--primario);
+    }
+
+    /* Si el menú está abierto, muestra más detalles */
+    .menu_dashboard.open .menu {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .menu .enlace.active {
+        background: var(--quinto);
+        color: var(--blanco);
+    }
+}
+
+/* @media (max-width: 768px) {
+
+    .top_menu,
+    .toggle i,
+    .input_search,
+    .input_search i,
+    #logout {
+        display: none;
+    }
+
+    .menu_dashboard {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        width: 100%;
+
+    }
+
+    .menu .enlace {
+        padding: 0 10px;
+        width: 50px;
+    }
+
+    .menu .enlace {
+        width: auto; 
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        font-size: 20px;
+        transition: all .3s ease;
+    } 
+
+    .menu .enlace i {
+        font-size: 30px;
+        color: var(--primario);
+    }
+
+
+    .menu_dashboard.open .menu {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .menu .enlace.active {
+        background: var(--quinto);
+        color: var(--blanco);
+    }
+} */
