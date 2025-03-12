@@ -9,73 +9,188 @@
     <title>Sinergia Creativa</title>
 </head>
 <body>
-    <div class="menu_dashboard">
-        <!-- top menu -->
-        <div class="top_menu">
-            <div class="logo">
-                <!-- <img src="/assets/Sinergia Creativa.png" alt=""> -->
-                <span>Sinergia Creativa</span>
-            </div>
-        
-            <div class="toggle">
-                <i class="material-icons">menu</i>
-            </div>
-        </div>
-        <!--  search -->
-        <div class="input_search">
-            <i class="material-icons">search</i>
-            <input type="text" class="input" placeholder="Buscar">
-        </div>
-        <!-- menu -->
-        <div class="menu">
-            <div class="enlace">
-                <a class="link_menu" href="/index.html">
-                    <i class="material-icons">home</i>
-                    <span>Inicio</span>
-                </a>
-            </div>
+    <div class="container">
+        <div class="menu_dashboard">
+            <div class="top_menu">
+                <div class="logo">
+                    <span>Sinergia Creativa</span>
+                </div>
             
-            <div class="enlace">
-                <a class="link_menu" href="/pages/calculadora.html">
-                    <i class="material-icons">attach_money</i>
-                    <span>Calculadora </span>
-                </a>
+                <div class="toggle">
+                    <i class="material-icons">menu</i>
+                </div>
             </div>
     
-            <div class="enlace">
-                <a class="link_menu" href="/pages/simulador.html">
-                    <i class="material-icons">shopping_cart_checkout</i>
-                    <span>Simulador</span>
-                </a>
+            <div class="input_search">
+                <i class="material-icons">search</i>
+                <input type="text" class="input" placeholder="Buscar">
             </div>
-
-            <div class="enlace">
-                <a class="link_menu" href="/pages/planificador.html">
-                    <i class="material-icons">calendar_month</i>
-                    <span>Planificador</span>
-                </a>
+    
+            <div class="menu">
+                <div class="enlace">
+                    <a class="link_menu" href="/index.html">
+                        <i class="material-icons">home</i>
+                        <span>Inicio</span>
+                    </a>
+                </div>
+                
+                <div class="enlace">
+                    <a class="link_menu" href="/pages/calculadora.html">
+                        <i class="material-icons">attach_money</i>
+                        <span>Calculadora </span>
+                    </a>
+                </div>
+        
+                <div class="enlace">
+                    <a class="link_menu" href="/pages/simulador.html">
+                        <i class="material-icons">shopping_cart_checkout</i>
+                        <span>Simulador</span>
+                    </a>
+                </div>
+    
+                <div class="enlace">
+                    <a class="link_menu" href="/pages/planificador.html">
+                        <i class="material-icons">calendar_month</i>
+                        <span>Planificador</span>
+                    </a>
+                </div>
+    
+                <div class="enlace">
+                    <a class="link_menu" href="/pages/perfil.html">
+                        <i class="material-icons">person</i>
+                        <span>Perfil</span>
+                    </a>
+                </div>
+            
+                <div class="enlace">
+                    <button id="logout" class="link_menu">
+                        <i class="material-icons">logout</i>
+                        <span>Salir</span>
+                    </button>
+                </div>
             </div>
+        </div>
+    
+        <div class="panel">
+            <!-- comienzo encabezado -->
+            <div class="encabezado">
+                <div class="encabezado-titulo">
+                    <h4>Dashboard</h4>
+                </div>
+                
+                <div class="encabezado-datos-socio">
+                    <img src="/assets/avatar_hombre.avif" alt="avatar socio"  class="avatar">
+                    <i class="material-icons icon-ajustes">settings</i>
+                </div>
+            </div>
+            <!-- fin encabezado -->
 
-            <div class="enlace">
-                <a class="link_menu" href="/pages/perfil.html">
-                    <i class="material-icons">person</i>
-                    <span>Perfil</span>
-                </a>
+            <div class="datos-socio">
+                <div class="dato">
+                    <span class="label">Hola, </span>
+                    <span class="valor">Martin Rodriguez!</span>
+                </div>
+                <!-- <div class="dato">
+                    <span class="label">Mes:</span>
+                    <span class="valor">Febrero</span>
+                </div>
+                <div class="dato">
+                    <span class="label">Mi Ticket Promedio en USD:</span>
+                    <span class="valor">1100</span>
+                </div>
+                <div class="dato">
+                    <span class="label">Valor USD:</span>
+                    <span class="valor">1055</span>
+                </div> -->
+                <img src="/assets/s_text_image.svg" alt="imagen_sinergia">
+            </div>
+            
+        </div>
+    
+        <div class="panel-derecho">  
+            <!-- ganancia neta de hoy -->
+            <div class="ganancia-hoy">
+                <h4>Ganancia Neta Hoy</h4>
+                <div class="ganancia">
+                    <i class="material-icons icon-paid">paid</i>
+                    <p>2500 USD</p>
+                    <i class="material-icons icon-arrow">arrow_forward_ios</i>
+                </div>
             </div>
         
-            <div class="enlace">
-                <button id="logout" class="link_menu">
-                    <i class="material-icons">logout</i>
-                    <span>Salir</span>
-                </button>
+            <!-- Plan de accion hoy
+                minimo de presentaciones x mes
+                minimo de presentaciones x sem
+             -->
+            <div class="plan-accion-hoy">
+                <h4>Plan de accion hoy</h4>
+                <div class="plan-datos">
+                    <div class="datos-titulo">
+                        <h5><span>Minimo de presentaciones</span></h5>
+                    </div>
+                    <div class="datos">
+                        <div class="datos-mes">
+                            <span>Por mes</span>
+                            <p>58</p>
+                        </div>
+                        <div class="datos-semana">
+                            <span>Por semana</span>
+                            <p>14</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- metas de ventas mensual
+                lo que debe vender
+                lo qye sumara
+                total de ventas que debe hacer
+             -->
+            <div class="meta-ventas">
+                <h4><span>Meta de ventas mensual</span></h4>
+                <div class="metas">
+                    <div class="meta-vender">
+                        <span>Debe vender</span>
+                        <p>58</p>
+                    </div>
+                    <div class="meta-sumara">
+                        <span>Sumará</span>
+                        <p>2000</p>
+                    </div>
+                    <div class="meta-total-ventas">
+                        <span>Total a vender</span>
+                        <p>58</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendario_contenedor">
+                <div class="calendario">
+                    <div class="calendario_header">
+                        <button class="calendario_btn" id="prev_month">Prev</button>
+                        <span id="month_year" class="month_year"></span>
+                        <button class="calendario_btn" id="next_month">Next</button>
+                    </div>
+                    <div class="calendar_body">
+                        <div class="days_of_week">
+                            <div>Dom</div>
+                            <div>Lun</div>
+                            <div>Mar</div>
+                            <div>Mier</div>
+                            <div>Jue</div>
+                            <div>Vier</div>
+                            <div>Sab</div>
+                        </div>
+                        <div class="days" id="calendar_days"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="panel">
-        
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/calendario.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/grafico.js"></script>
+    
 </body>
 </html>

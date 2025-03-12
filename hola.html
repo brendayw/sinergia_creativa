@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebApp de Metas de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+        }
+        .container {
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        .input-group label {
+            margin-right: 10px;
+        }
+        .button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sinergia Creativa</h1>
+        <p>Gestión de Metas Mensuales de Ventas</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#metas">Metas Mensuales</a>
+        <a href="#plan">Plan de Acción</a>
+        <a href="#capacitacion">Capacitación</a>
+    </nav>
+
+    <div class="container" id="inicio">
+        <h2>Resumen de Objetivos</h2>
+        <p><strong>Objetivo de Ganancia Mensual:</strong> $500,000</p>
+        <p><strong>Ventas Necesarias:</strong> $6,050,000</p>
+        <p><strong>Volumen en Carrera Acumulado:</strong> $5,735 USD</p>
+        <p><strong>Nivel Actual de Comisiones:</strong> 10%</p>
+    </div>
+
+    <div class="container" id="productos">
+        <h2>Ventas por Producto</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Ventas (USD)</th>
+                    <th>Comisión (10%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto A</td>
+                    <td>$10,000</td>
+                    <td>$826</td>
+                </tr>
+                <tr>
+                    <td>Producto B</td>
+                    <td>$20,000</td>
+                    <td>$1,240</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Simulador de Comisiones</h3>
+        <div class="input-group">
+            <label for="ticket-promedio">Mi Ticket Promedio (USD):</label>
+            <input type="number" id="ticket-promedio" value="850" />
+        </div>
+        <div class="input-group">
+            <label for="comision">Seleccionar Comisión:</label>
+            <select id="comision">
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+                <option value="35">35%</option>
+                <option value="40">40%</option>
+            </select>
+        </div>
+        <button class="button" onclick="calcularComision()">Calcular Ganancia</button>
+
+        <p><strong>Ganancia Neta Hoy:</strong> <span id="ganancia-neta">$826</span></p>
+    </div>
+
+    <div class="container" id="metas">
+        <h2>Objetivo Mensual de Ventas</h2>
+        <div class="input-group">
+            <label for="meta-ganancia">Objetivo de Ganancia:</label>
+            <input type="number" id="meta-ganancia" value="500000" />
+        </div>
+        <h3>Ventas Necesarias por Producto</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Ventas Necesarias (USD)</th>
+                    <th>Volumen en Carrera (USD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto A</td>
+                    <td>$3,993,000</td>
+                    <td>$5,735</td>
+                </tr>
+                <tr>
+                    <td>Producto B</td>
+                    <td>$3,025,000</td>
+                    <td>$3,785</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container" id="plan">
+        <h2>Plan de Acción</h2>
+        <div class="input-group">
+            <label for="nuevos-datos">Nuevos Datos a Prospectar:</label>
+            <input type="number" id="nuevos-datos" value="40" />
+        </div>
+        <h3>Presentaciones Mínimas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Presentaciones por Mes</th>
+                    <th>Presentaciones por Semana</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto A</td>
+                    <td>22</td>
+                    <td>0.9</td>
+                </tr>
+                <tr>
+                    <td>Producto B</td>
+                    <td>13</td>
+                    <td>0.5</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button class="button">Guardar Plan de Acción</button>
+    </div>
+
+    <!-- <div class="container" id="capacitacion">
+        <h2>Capacitación</h2>
+        <p><strong>Horas de Capacitación Sugeridas:</strong> 20 horas semanales</p>
+        <h3>Recursos de Capacitación</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recurso</th>
+                    <th>Horas Estimadas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Curso de Ventas</td>
+                    <td>10 hs</td>
+                </tr>
+                <tr>
+                    <td>Capacitación sobre Productos</td>
+                    <td>10 hs</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
+    <script>
+        function calcularComision() {
+            const ticketPromedio = document.getElementById('ticket-promedio').value;
+            const comision = document.getElementById('comision').value;
+            const gananciaNeta = (ticketPromedio * (comision / 100)).toFixed(2);
+            document.getElementById('ganancia-neta').textContent = `$${gananciaNeta}`;
+        }
+    </script>
+
+</body>
+</html>
