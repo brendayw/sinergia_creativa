@@ -27,6 +27,7 @@ body {
     height: 100vh;
 }
 
+/* --------- menu ----------- */ 
 .menu_dashboard {
     max-width: 75px;
     height: 100vh;
@@ -195,6 +196,7 @@ button {
     text-decoration: none;
     border: none;
 }
+/* ------fin menu ------------ */
 
 /* ---------- PANEL --------------*/
 .panel {
@@ -203,14 +205,11 @@ button {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto; */
     gap: 20px;
     padding: 10px;
 }
 
-/*encabezado de panel y panel-derecho*/
+/* ----------- encabezado de panel y panel-derecho ----------- */
 .encabezado {
     width: 128%;
     height: 50px;
@@ -221,39 +220,12 @@ button {
     z-index: 10;
 }
 
-.encabezado-titulo {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--primario);
-}
-
-.encabezado-datos-socio {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 10%;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.icon-ajustes {
-    font-size: 25px;
-    cursor: pointer;
-    color: var(--primario);
-}
-/* fin de encabezado*/
-
-/* tarjeta de datos del socio */
+/* contenedor con datos del socio y saludo */
 .contenedor-datos-socio {
     background-color: var(--cuaternario);
-    width: 100%;
-    height: 120px;
-    margin-top: -15px;
+    width: 78%;
+    height: 50px;
+    margin-top: 15px;
     padding: 15px;
     border-radius: 8px;
     display: flex;
@@ -290,29 +262,210 @@ button {
 }
 
 .contenedor-datos-socio img {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
+    margin-top: 15px;
     margin-left: auto;
     padding-right: 1rem;
 }
 
-
-/* grafico de ventas */
-/* .grafico-ventas {
-    border: 1px solid var(--quinto); 
-    box-shadow: 2px 2px 5px var(--quinto);
-    border-radius: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-    height: 280px;
-} */
-
-.grafico {
-    width: 100%;
-    height: 280px;
+/*foto de perfil y ajustes */
+.encabezado-datos-socio {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 10%;
 }
 
-/* PANEL DERECHO */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.icon-ajustes {
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--primario);
+}
+/* ---------- fin de encabezado ------- */
+
+/* ---------- tickets ----------- */
+.tickets {
+    width: 95%;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+}
+
+.mes-actual span,
+.promedio span,
+.valor span {
+    font-size: 14px;
+}
+
+.mes-actual {
+    padding: 0.3rem;
+}
+
+.promedio input,
+.valor input {
+    width: 175px;
+    height: 30px;
+    box-shadow: 2px 2px 2px var(--quinto);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-family: "Montserrat", serif;
+}
+/* ---------- fin tickets ------------ */
+
+/* -------------- contenedor de datos ---------------- */
+.contenedor-datos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    height: 500px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+/*scroll bar */
+.contenedor-datos::-webkit-scrollbar {
+    height: 8px;
+}
+
+.contenedor-datos::-webkit-scrollbar-thumb {
+    background: var(--secundario);
+    border-radius: 5px;
+}
+
+.contenedor-datos::-webkit-scrollbar-track {
+    background: var(--terciario);
+}
+/* fin del scroll bar */
+
+/*simulador de ventas*/
+.simulador, .objetivos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 15px;
+}
+
+.simulador-ventas, 
+.ganancias-ventas {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid var(--quinto);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.titulo-simulador, .titulo-objetivos {
+    font-size: 1.2rem;
+    color: var(--terciario);
+    margin: 0;
+    padding: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.comision, .ticket, .precio, 
+.ingresos, .a-vender, .a-sumar,
+.total-mes {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 15px;
+}
+
+.comision span, .ticket span, .precio span,
+.ingresos span, .a-vender span, .a-sumar span,
+.total-mes span {
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+    color: var(--secundario);
+}
+
+.comision select,
+.ticket select,
+.precio input,
+.ingresos input {
+    color: var(--secundario);
+    background-color: var(--blanco);
+    border: 1px solid var(--quinto);
+    border-radius: 8px;
+    outline: none;
+    font-family: "Montserrat", serif;
+    margin-left: 15px;
+    padding: 8px;
+}
+
+/* graficos */
+.grafico, .grafico-objetivos  {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px var(--primario);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#comisionesChart, #ventasChart {
+    justify-content: center;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.ganancias-ventas span {
+    color: var(--secundario);
+    font-size: 15px;
+}
+
+.ingresos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ingresos span {
+    color: var(--secundario);
+    font-size: 15px;
+}
+
+.grafico-objetivos {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px var(--primario);
+    border-radius: 1rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+/* ------------ PANEL DERECHO ------------- */
 .panel-derecho {
     width: 25%;
     height: 100vh;
@@ -321,7 +474,7 @@ button {
     box-shadow: 2px 2px 5px var(--primario);
 }
 
-/*ganancia*/
+/* ganancia neta hoy */
 .ganancia-hoy {
     margin-top: 45px;
     height: 90px;
@@ -367,8 +520,9 @@ button {
     color: var(--secundario);
     margin-left: -45px;
 }
+/* fin de ganancia neta hoy */
 
-/*plan de accion*/ 
+/* plan de accion */ 
 .plan-accion-hoy {
     height: 100px;
     margin-top: 5px;
@@ -411,7 +565,7 @@ button {
 }
 /* fin plan de accion hoy*/
 
-/*metas de ventas*/
+/* metas de ventas */
 .meta-ventas {
     margin-top: 5px;
     height: 120px;
@@ -448,7 +602,7 @@ button {
 .metas p {
     color: var(--terciario);
 }
-/*fin metas por ventas mensual*/
+/* fin metas por ventas mensual */
 
 /*calendario*/
 .calendario_contenedor {

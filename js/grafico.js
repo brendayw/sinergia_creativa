@@ -29,11 +29,21 @@ function actualizarGrafico() {
         },
         options: {
             scales: {
+                x: {
+                    grid: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    max: 10
+                },
                 y: {
                     beginAtZero: true,
                     grid: {
                         display: false,
                         drawBorder: false,
+                    },
+                    ticks: {
+                        display: false,
                     },
                 }
             }
@@ -51,3 +61,12 @@ function cargarGananciaNeta() {
     }
 }
 cargarGananciaNeta();
+
+/*grafico objetivos*/
+const ctx = document.getElementById('ventasChart').getContext('2d');
+const productos = ["Producto A", "Producto B", "Producto C", "Producto D", "Producto E"];
+
+const valorCambioUSD = parseFloat(document.getElementById('valorUSD').value) || 0;
+const ticketPromedioUSD = parseFloat(document.getElementById('ticketPromedio').value) || 0;
+
+

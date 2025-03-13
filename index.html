@@ -74,10 +74,19 @@
         <div class="panel">
             <!-- comienzo encabezado -->
             <div class="encabezado">
-                <div class="encabezado-titulo">
-                    <h4>Dashboard</h4>
+                
+                <div class="contenedor-datos-socio">
+                    <div class="datos-socio">
+                        <div class="dato">
+                            <span class="label">Hola, </span>
+                            <!-- el nombre debe depender del backend -->
+                            <span class="valor">Martin Rodriguez!</span>
+                        </div>
+                    </div>
+                    <img src="/assets/s_text_image.svg" alt="imagen_sinergia">
                 </div>
                 
+                <!-- cambiar por contenedor-datos-socio -->
                 <div class="encabezado-datos-socio">
                     <img src="/assets/avatar_hombre.avif" alt="avatar socio"  class="avatar">
                     <i class="material-icons icon-ajustes">settings</i>
@@ -85,69 +94,84 @@
             </div>
             <!-- fin encabezado -->
 
-            <div class="contenedor-datos-socio">
-                <div class="datos-socio">
-                    <div class="dato">
-                        <span class="label">Hola, </span>
-                        <span class="valor">Martin Rodriguez!</span>
+            <div class="tickets">
+                <div class="datos-ticket">
+                    <div class="mes-actual">
+                        <span><strong>Mes:</strong></span>
+                        <span> </span>
                     </div>
-                    <div class="datos-ticket">
-                        <div class="mes-actual">
-                            <span><strong>Mes:</strong></span>
-                            <span> </span>
-                        </div>
-                        <div class="promedio">
-                            <span><strong>Ticket promedio en USD: </strong> </span>
-                            <span>1100</span>
-                        </div>
-                        <div class="valor">
-                            <span><strong>Valor en USD: </strong></span>
-                            <span>1055</span>
-                        </div>                
-                    </div>
-                </div>
-                <img src="/assets/s_text_image.svg" alt="imagen_sinergia">
-            </div>
-
-            <div class="simulador">
-                <div class="simulador-de-venta">
-                    <div class="titulo-simulador">
-                        <h4>Simulador de Venta</h4>
-                    </div>
-            
-                    <div class="comision">
-                        <span>Comisión Actual: </span>
-                        <select name="comision" id="comision">
-                            <option value="10">10%</option>
-                            <option value="15">15%</option>
-                            <option value="20">20%</option>
-                            <option value="25">25%</option>
-                            <option value="30">30%</option>
-                            <option value="35">35%</option>
-                            <option value="40">40%</option>
-                        </select>
-            
-                        <span>Seleccione un ticket de venta como ejemplo: </span>
-                        <select name="producto" id="producto">
-                            <option value="productoA">Producto A</option>
-                            <option value="productoB">Producto B</option>
-                            <option value="productoC">Producto C</option>
-                            <option value="productoD">Producto D</option>
-                            <option value="productoE">Producto E</option>
-                            <option value="productoF">Producto F</option>
-                            <option value="productoG">Producto G</option>
-                        </select>
-            
-                        <span>Precio del producto: </span>
-                        <input type="text" id="precioProducto" value="Ingrese el precio">
-            
-                        <div class="grafico">
-                            <canvas id="comisionesChart" width="400" height="200"></canvas>
-                        </div>
+                    <div class="promedio">
+                        <span><strong>Ticket promedio en USD: </strong> </span>
+                        <input type="text" id="ticketPromedio" placeholder="Ingrese el valor">
                         
                     </div>
+                    <div class="valor">
+                        <span><strong>Valor en USD: </strong></span>
+                        <input type="text" id="valorUSD" placeholder="Ingrese el valor en USD">
+                    </div>                
                 </div>
-            </div> 
+            </div>
+
+            <div class="contenedor-datos">
+                <div class="simulador">
+                    <div class="simulador-ventas">
+                        <div class="titulo-simulador">
+                            <h4>Simulador de Venta</h4>
+                        </div>
+                
+                        <div class="comision">
+                            <span>Comisión Actual: </span>
+                            <select name="comision" id="comision">
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
+                                <option value="25">25%</option>
+                                <option value="30">30%</option>
+                                <option value="35">35%</option>
+                                <option value="40">40%</option>
+                            </select>
+                        </div>
+                        <div class="ticket">
+                            <span>Seleccione un ticket de venta: </span>
+                            <select name="producto" id="producto">
+                                <option value="productoA">Producto A</option>
+                                <option value="productoB">Producto B</option>
+                                <option value="productoC">Producto C</option>
+                                <option value="productoD">Producto D</option>
+                                <option value="productoE">Producto E</option>
+                                <option value="productoF">Producto F</option>
+                                <option value="productoG">Producto G</option>
+                            </select>
+                        </div>
+                
+                        <div class="precio">
+                            <span>Precio del producto: </span>
+                            <input type="text" id="precioProducto" placeholder="Ingrese el precio">
+                        </div>
+                    </div>
+                
+                    <div class="grafico">
+                        <canvas id="comisionesChart" width="400" height="200"></canvas>
+                    </div>                   
+                </div> 
+
+                <div class="objetivos">
+                    <div class="ganancias-ventas">
+                        <div class="titulo-objetivos">
+                            <h4>Objetivos</h4>
+                        </div>
+                        
+                        <div class="ingresos">
+                            <span>¿Cuanto quiero ganar este mes?</span>
+                            <input type="text" id="ingresos" placeholder="Ingrese el monto">
+                        </div>
+                    </div>
+                    <div class="grafico-objetivos">
+                        <canvas id="ventasChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
     
         <div class="panel-derecho">  
@@ -192,16 +216,22 @@
                 <h4><span>Meta de ventas mensual</span></h4>
                 <div class="metas">
                     <div class="meta-vender">
-                        <span>Debe vender</span>
-                        <p>58</p>
+                        <div class="vender">
+                            <span>Debe vender</span>
+                        </div>
+                        <p id="ventasMes">0</p>
                     </div>
                     <div class="meta-sumara">
-                        <span>Sumará</span>
-                        <p>2000</p>
+                        <div class="sumara">
+                            <span>Sumará</span>
+                        </div>
+                        <p id="volumenUSD">0</p>
                     </div>
                     <div class="meta-total-ventas">
-                        <span>Total a vender</span>
-                        <p>58</p>
+                        <div class="total">
+                            <span>Total a vender</span>
+                        </div>
+                        <p id="totalProductos">0</p>
                     </div>
                 </div>
             </div>
