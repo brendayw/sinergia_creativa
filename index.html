@@ -85,26 +85,69 @@
             </div>
             <!-- fin encabezado -->
 
-            <div class="datos-socio">
-                <div class="dato">
-                    <span class="label">Hola, </span>
-                    <span class="valor">Martin Rodriguez!</span>
+            <div class="contenedor-datos-socio">
+                <div class="datos-socio">
+                    <div class="dato">
+                        <span class="label">Hola, </span>
+                        <span class="valor">Martin Rodriguez!</span>
+                    </div>
+                    <div class="datos-ticket">
+                        <div class="mes-actual">
+                            <span><strong>Mes:</strong></span>
+                            <span> </span>
+                        </div>
+                        <div class="promedio">
+                            <span><strong>Ticket promedio en USD: </strong> </span>
+                            <span>1100</span>
+                        </div>
+                        <div class="valor">
+                            <span><strong>Valor en USD: </strong></span>
+                            <span>1055</span>
+                        </div>                
+                    </div>
                 </div>
-                <!-- <div class="dato">
-                    <span class="label">Mes:</span>
-                    <span class="valor">Febrero</span>
-                </div>
-                <div class="dato">
-                    <span class="label">Mi Ticket Promedio en USD:</span>
-                    <span class="valor">1100</span>
-                </div>
-                <div class="dato">
-                    <span class="label">Valor USD:</span>
-                    <span class="valor">1055</span>
-                </div> -->
                 <img src="/assets/s_text_image.svg" alt="imagen_sinergia">
             </div>
+
+            <div class="simulador">
+                <div class="simulador-de-venta">
+                    <div class="titulo-simulador">
+                        <h4>Simulador de Venta</h4>
+                    </div>
             
+                    <div class="comision">
+                        <span>Comisión Actual: </span>
+                        <select name="comision" id="comision">
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                            <option value="35">35%</option>
+                            <option value="40">40%</option>
+                        </select>
+            
+                        <span>Seleccione un ticket de venta como ejemplo: </span>
+                        <select name="producto" id="producto">
+                            <option value="productoA">Producto A</option>
+                            <option value="productoB">Producto B</option>
+                            <option value="productoC">Producto C</option>
+                            <option value="productoD">Producto D</option>
+                            <option value="productoE">Producto E</option>
+                            <option value="productoF">Producto F</option>
+                            <option value="productoG">Producto G</option>
+                        </select>
+            
+                        <span>Precio del producto: </span>
+                        <input type="text" id="precioProducto" value="Ingrese el precio">
+            
+                        <div class="grafico">
+                            <canvas id="comisionesChart" width="400" height="200"></canvas>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div> 
         </div>
     
         <div class="panel-derecho">  
@@ -113,7 +156,7 @@
                 <h4>Ganancia Neta Hoy</h4>
                 <div class="ganancia">
                     <i class="material-icons icon-paid">paid</i>
-                    <p>2500 USD</p>
+                    <p id="gananciaNeta">0</p>
                     <i class="material-icons icon-arrow">arrow_forward_ios</i>
                 </div>
             </div>

@@ -1,36 +1,35 @@
-/*calendario*/
-const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+/* calendario */
+const mesesNombre = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const diasEnMes = (mes, anio) => new Date(anio, mes + 1, 0).getDate();
 
-let currentDate = new Date();
+let fechaActual = new Date();
 
-const calendarDays = document.getElementById('calendar_days');
-const monthYear = document.getElementById('month_year');
+const diasCalendario = document.getElementById('calendar_days');
+const mesAnio = document.getElementById('month_year');
 
 function generateCalendar() {
-    const month = currentDate.getMonth();
-    const year = currentDate.getFullYear();
-    const today = currentDate.getDate();
+    const mes = fechaActual.getMonth();
+    const anio = fechaActual.getFullYear();
+    const hoy = fechaActual.getDate();
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInCurrentMonth = daysInMonth(month, year);
+    const primerDia = new Date(anio, mes, 1).getDay();
+    const diasEnElMesActual = diasEnMes(mes, anio);
 
-    monthYear.textContent = `${monthNames[month]} ${year}`;
+    mesAnio.textContent = `${mesesNombre[mes]} ${anio}`;
 
-    calendarDays.innerHTML = '';
+    diasCalendario.innerHTML = '';
 
-    for (let i = 0; i < firstDay; i++) {
-        const emptyDay = document.createElement('div');
-        calendarDays.appendChild(emptyDay);
+    for (let i = 0; i < primerDia; i++) {
+        const diaVacio = document.createElement('div');
+        diasCalendario.appendChild(diaVacio);
     }
 
-    //genera los dias del mes
-    for (let i = 1; i <= daysInCurrentMonth; i++) {
+    for (let i = 1; i <= diasEnElMesActual; i++) {
         const dayElement = document.createElement('div');
         dayElement.classList.add('day');
         dayElement.textContent = i;
 
-        if (i === today) {
+        if (i === hoy) {
             dayElement.classList.add('selected');
         }
         
@@ -39,17 +38,22 @@ function generateCalendar() {
             dayElement.classList.add('selected');
         });
 
-        calendarDays.appendChild(dayElement);
+        diasCalendario.appendChild(dayElement);
     }
+
+    // Actualizar el mes en el elemento .mes-actual
+    document.querySelector(".mes-actual span:nth-child(2)").textContent = mesesNombre[mes];
 }
 
+
 document.getElementById('prev_month').addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
+    fechaActual.setMonth(fechaActual.getMonth() - 1);
     generateCalendar();
 });
 
+
 document.getElementById('next_month').addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
+    fechaActual.setMonth(fechaActual.getMonth() + 1);
     generateCalendar();
 });
 
