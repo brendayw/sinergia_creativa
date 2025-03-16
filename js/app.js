@@ -28,8 +28,8 @@ function actualizarDatos() {
     const gananciaNeta = calcularGananciaNeta(valorProducto, porcentajeComision);
 
     if (!isNaN(gananciaNeta)) {
-        localStorage.setItem('gananciaNeta', gananciaNeta.toFixed(2));
-        document.getElementById('gananciaNeta').innerText = `${gananciaNeta.toFixed(2)}`;
+        localStorage.setItem('gananciaNeta', gananciaNeta.toFixed(0));
+        document.getElementById('gananciaNeta').innerText = `${gananciaNeta.toFixed(0)}`;
     } else {
         console.error('El cálculo de la ganancia neta falló. Revise los valores.');
     }
@@ -40,55 +40,8 @@ function actualizarDatos() {
 document.getElementById('precioProducto').addEventListener('input', actualizarDatos);
 document.getElementById('comision').addEventListener('change', actualizarDatos);
 
-/* Calcular metas mensuales */
-// function calcularVentasMensuales() {
-//     const ingresos = parseFloat(document.getElementById("ingresos").value.replace(/\./g, "").replace(/,/g, ".")) || 0;
-//     const valorUsd = parseFloat(document.getElementById("valorUSD").value.replace(/\./g, "").replace(/,/g, ".")) || 1;
-//     const ticketPromedio = parseFloat(document.getElementById("ticketPromedio").value.replace(/\./g, "").replace(/,/g, ".")) || 1;
-
-//     const comisionSelect = parseInt(document.getElementById("comision").value);
-
-//     const comisionMultiplicador = {
-//         10: 10,
-//         15: 6.6,
-//         20: 5,
-//         25: 4,
-//         30: 3.3,
-//         35: 2.85,
-//         40: 1.8
-//     }[comisionSelect] || 1;
-
-//     const debeVender = ingresos * 1.21 * comisionMultiplicador;
-//     const volumenUSD = debeVender / valorUsd;
-//     const totalProductos = volumenUSD / ticketPromedio;
-    
-//     document.getElementById("ventasMes").textContent = `$ ${debeVender.toLocaleString("es-ES", { minimumFractionDigits: 0 })}`;
-//     document.getElementById("volumenUSD").textContent = `${volumenUSD.toFixed(0)} USD`;
-//     document.getElementById("totalProductos").textContent = Math.floor(totalProductos);
-
-//     const event = new CustomEvent('actualizarGrafico', {
-//         detail: {
-//             ventasMensuales: debeVender,
-//             volumenUSD: volumenUSD,
-//             totalProductos: totalProductos,
-//             comisionSelect: comisionSelect
-//         }
-//     });
-//     document.dispatchEvent(event);
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const inputs = document.querySelectorAll("#ingresos, #comision, #valorUSD, #ticketPromedio");
-//     inputs.forEach(input => {
-//         input.addEventListener("input", calcularVentasMensuales);
-//     });
-
-//     // Detectar cambios en el select de comisión
-//     document.getElementById("comision").addEventListener("change", calcularVentasMensuales);
-// });
-
+/* PANEL DERECHO - METAS MENSUALES */
 function calcularVentasMensuales() {
-    // Obtener valores del formulario y limpiar separadores incorrectos
     const ingresos = parseFloat(document.getElementById("ingresos").value.replace(/\./g, "").replace(/,/g, ".")) || 0;
     const valorUsd = parseFloat(document.getElementById("valorUSD").value.replace(/\./g, "").replace(/,/g, ".")) || 1;
     const ticketPromedio = parseFloat(document.getElementById("ticketPromedio").value.replace(/\./g, "").replace(/,/g, ".")) || 1;
@@ -103,29 +56,32 @@ function calcularVentasMensuales() {
         40: 1.8
     };
 
-    // Calcular los valores para todas las comisiones
     const resultados = [];
-    for (let comision in comisionMultiplicador) {
-        const multiplicador = comisionMultiplicador[comision];
+    for (let valorComision in comisionMultiplicador) {
+        const multiplicador = comisionMultiplicador[valorComision];
         const debeVender = ingresos * 1.21 * multiplicador;
         const volumenUSD = debeVender / valorUsd;
         const totalProductos = volumenUSD / ticketPromedio;
         
         resultados.push({
-            comision: comision,
+            valorComision: valorComision,
             debeVender: debeVender,
             volumenUSD: volumenUSD,
             totalProductos: totalProductos
         });
     }
 
-    // Mostrar valores en la interfaz
-    document.getElementById("ventasMes").textContent = `$ ${resultados[0].debeVender.toLocaleString("es-ES", { minimumFractionDigits: 0 })}`;
-    document.getElementById("volumenUSD").textContent = `${resultados[0].volumenUSD.toFixed(0)} USD`;
-    document.getElementById("totalProductos").textContent = resultados[0].totalProductos.toFixed(1);
+    const comisionSeleccionada = parseInt(document.getElementById("comision").value);
+    const resultadoSeleccionado = resultados.find(r => r.valorComision == comisionSeleccionada);
 
+    if (resultadoSeleccionado) {
+        document.getElementById("ventasMes").textContent = `$ ${resultadoSeleccionado.debeVender.toLocaleString("es-ES", { minimumFractionDigits: 0 })}`;
+        document.getElementById("volumenUSD").textContent = `${resultadoSeleccionado.volumenUSD.toFixed(0)} USD`;
+        document.getElementById("totalProductos").textContent = resultadoSeleccionado.totalProductos.toFixed(0);
+    } else {
+        console.error('No se encontró un resultado para la comisión seleccionada');
+    }
 
-    // Emitir evento con los resultados
     const event = new CustomEvent('actualizarGrafico', {
         detail: {
             resultados: resultados
@@ -140,15 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener("input", calcularVentasMensuales);
     });
 
-    document.getElementById("comision").addEventListener("change", calcularVentasMensuales);
+    document.getElementById("comisionSeleccionada").addEventListener("change", calcularVentasMensuales);
 });
-
-
-
-
-
-
-
-
-
-

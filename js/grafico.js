@@ -5,6 +5,7 @@ function calcularComision(valorProducto, porcentajeComision) {
     return valorNeto * (porcentajeComision / 100);
 }
 
+//grafico de comisiones
 function actualizarGrafico() {
     const valorProducto = parseFloat(document.getElementById('precioProducto').value) || 0;
     const comisiones = [10, 15, 20, 25, 30, 35, 40];
@@ -54,131 +55,6 @@ function actualizarGrafico() {
 document.getElementById('precioProducto').addEventListener('input', actualizarDatos);
 document.getElementById('comision').addEventListener('change', actualizarDatos);
 
-function cargarGananciaNeta() {
-    const gananciaNeta = localStorage.getItem('gananciaNeta');
-    if (gananciaNeta) {
-        document.getElementById('gananciaNeta').innerText = `$${gananciaNeta}`;
-    }
-}
-cargarGananciaNeta();
-
-/*grafico objetivos*/
-// document.addEventListener('DOMContentLoaded', function () {
-//     const ctx = document.getElementById('ventasChart').getContext('2d');
-
-//     const ventasChart = new Chart(ctx, {
-//         type: 'bar',
-//         data: {
-//             labels: ['Debe vender', 'Volumen en USD', 'Ventas del mes'],
-//             datasets: [
-//                 {
-//                     label: 'Comisión 10%',
-//                     data: [0, 0, 0],
-//                     borderColor: 'rgb(255, 99, 133)',
-//                     backgroundColor: 'rgb(255, 99, 133)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 15%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgba(54, 162, 235, 1)',
-//                     backgroundColor: 'rgb(54, 163, 235)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 20%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgba(255, 206, 86, 1)',
-//                     backgroundColor: 'rgb(255, 207, 86)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 25%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgba(75, 192, 192, 1)',
-//                     backgroundColor: 'rgb(75, 192, 192)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 30%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgba(153, 102, 255, 1)',
-//                     backgroundColor: 'rgb(153, 102, 255)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 35%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgba(255, 159, 64, 1)',
-//                     backgroundColor: 'rgb(255, 160, 64)',
-//                     fill: true,
-//                     tension: 0.1
-//                 },
-//                 {
-//                     label: 'Comisión 40%',
-//                     data: [0, 0, 0], // Inicialmente en 0
-//                     borderColor: 'rgb(208, 255, 99)',
-//                     backgroundColor: 'rgb(255, 99, 133)',
-//                     fill: true,
-//                     tension: 0.1
-//                 }
-//             ]
-//         },
-//         options: {
-//             scales: {
-//                 y: {
-//                     beginAtZero: true
-//                 }
-//             },
-//             responsive: true,
-//             plugins: {
-//                 legend: {
-//                     position: 'top',
-//                 },
-//                 tooltip: {
-//                     mode: 'index',
-//                     intersect: false,
-//                 }
-//             }
-//         }
-//     });
-
-//     // Escuchar el evento 'actualizarGrafico' y actualizar el gráfico
-//     document.addEventListener('actualizarGrafico', function(event) {
-//         const { ventasMensuales, volumenUSD, totalProductos, comisionSelect } = event.detail;
-
-//         // Definir multiplicadores de comisión
-//         const comisiones = [10, 15, 20, 25, 30, 35, 40];
-        
-//         comisiones.forEach((comision, index) => {
-//             const multiplicador = {
-//                 10: 10,
-//                 15: 6.6,
-//                 20: 5,
-//                 25: 4,
-//                 30: 3.3,
-//                 35: 2.85,
-//                 40: 1.8
-//             }[comision] || 1;
-
-//             const ventas = ventasMensuales * multiplicador;
-//             const volumen = volumenUSD * multiplicador;
-//             const productos = totalProductos * multiplicador;
-
-//             // Si la comisión coincide con la seleccionada, se actualizan los datos para esa comisión
-//             ventasChart.data.datasets[index].data = [ventas, volumen, productos];
-//         });
-
-//         // Actualizar el gráfico con los nuevos datos
-//         ventasChart.update();
-//     });
-// });
-
 // grafico de objetivos
 document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('ventasChart').getContext('2d');
@@ -219,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     position: 'left',
                     ticks: {
                         beginAtZero: true,
+                        display: false,
                         max: 60
                     },
                     grid: {
@@ -231,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     position: 'right',
                     ticks: {
                         beginAtZero: true,
+                        display: false,
                         max: 60
                     },
                     grid: {
@@ -243,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     position: 'right',
                     ticks: {
                         beginAtZero: true,
+                        display: false,
                         max: 30,
                     },
                     grid: {
@@ -264,26 +143,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Escuchar el evento 'actualizarGrafico' y actualizar el gráfico
     document.addEventListener('actualizarGrafico', function(event) {
         const { resultados } = event.detail;
-
-        // Verificar el tamaño de 'resultados' y asegurarse de que hay 7 elementos
-        if (resultados.length === 7) {
-            console.log("Actualizando gráfico con los siguientes datos: ");
-            console.log(resultados); // Verifica los datos que estamos pasando
-
-            // Actualizar los datos de cada dataset
-            ventasChart.data.datasets[0].data = resultados.map(resultado => resultado.debeVender); // "Debe Vender"
-            ventasChart.data.datasets[1].data = resultados.map(resultado => resultado.volumenUSD); // "Volumen en USD"
-            ventasChart.data.datasets[2].data = resultados.map(resultado => resultado.totalProductos); // "Ventas del mes"
+    
+        console.log("Datos recibidos en el evento 'actualizarGrafico':", resultados);
+    
+        if (Array.isArray(resultados) && resultados.length === 7) {
+            ventasChart.data.datasets[0].data = resultados.map(resultado => resultado.debeVender || 0); // debe Vender
+            ventasChart.data.datasets[1].data = resultados.map(resultado => resultado.volumenUSD || 0); // "volumen a sumar"
+            ventasChart.data.datasets[2].data = resultados.map(resultado => resultado.totalProductos || 0); // "ventas del mes"
             
-            // Actualizar el gráfico con los nuevos datos
             ventasChart.update();
         } else {
-            console.error("Los resultados no tienen el formato esperado.");
+            console.error("Los resultados no tienen el formato esperado o la longitud es incorrecta.");
         }
     });
+    
 });
 
 
