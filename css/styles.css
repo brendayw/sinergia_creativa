@@ -211,7 +211,7 @@ button {
 
 /* ----------- encabezado de panel y panel-derecho ----------- */
 .encabezado {
-    width: 128%;
+    width: 130%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -223,8 +223,8 @@ button {
 /* contenedor con datos del socio y saludo */
 .contenedor-datos-socio {
     background-color: var(--cuaternario);
-    width: 78%;
-    height: 50px;
+    width: 76%;
+    height: 70px;
     margin-top: 15px;
     padding: 15px;
     border-radius: 8px;
@@ -242,7 +242,7 @@ button {
 }
 
 .dato span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: var(--primario);
 }
@@ -261,6 +261,10 @@ button {
     color: var(--secundario);
 }
 
+.dato p {
+    color: var(--secundario);
+}
+
 .contenedor-datos-socio img {
     width: 125px;
     height: 125px;
@@ -275,11 +279,12 @@ button {
     justify-content: flex-end;
     align-items: center;
     width: 10%;
+    margin-top: -10px;
 }
 
 .avatar {
-    width: 35px;
-    height: 35px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -483,7 +488,7 @@ button {
 
 /* ganancia neta hoy */
 .ganancia-hoy {
-    margin-top: 30px;
+    margin-top: 20px;
     height: 90px;
     padding: 10px;
     border-radius: 8px;
@@ -492,6 +497,7 @@ button {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    position: relative;
 }
 
 .ganancia-hoy h4 {
@@ -503,8 +509,8 @@ button {
     color: var(--primario);
     background-color: var(--cuaternario);
     box-shadow: 2px 2px 5px var(--primario);
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -513,25 +519,23 @@ button {
     gap: 50px;
 }
 
-.ganancia-hoy .icon-paid {
+.ganancia .icon-paid {
+    position: absolute;
+    left: 0;
+    top: 62%;
+    transform: translateY(-50%);
     color: var(--secundario);
     font-size: 25px;
-    margin-right: 5px;
-}
-
-.icon-arrow {
-    font-size: 15px;
+    margin-left: 65px;
 }
 
 .ganancia p {
     color: var(--terciario);
-    margin-left: -45px;
 }
 /* fin de ganancia neta hoy */
 
 /* metas de ventas */
 .meta-ventas {
-    margin-top: 0px;
     height: 120px;
     text-align: center;
 }
@@ -544,7 +548,7 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 10px;
+    gap: 8px;
     margin-top: 5px;
 }
 
@@ -620,24 +624,43 @@ button {
     color: var(--primario);
 }
 
+.datos-prospectar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+}
+
+.datos-prospectar span {
+    color: var(--secundario);
+    font-size: 12px;
+}
+
+.datos-prospectar p {
+    padding: 10px;
+    color: var(--terciario);
+    font-size: 12px;
+}
+
 .datos-titulo h5 {
     text-align: center;
     color: var(--secundario);
     font-size: 12px;
+    margin-top: -8px;
 }
 
 .datos {
     display: flex;
     justify-content: center;
     padding: 0.5rem;
-    gap: 50px;
+    gap: 40px;
 }
 
 .datos-mes, 
 .datos-semana {
     background-color: var(--cuaternario);
     box-shadow: 2px 2px 5px var(--primario);
-    width: 110px;
+    width: 100px;
     height: 50px;
     border-radius: 8px;
 }
@@ -654,7 +677,7 @@ button {
 
 /*calendario*/
 .calendario_contenedor {
-    margin-top: 12px;
+    margin-top: 25px;
     overflow: hidden;
     width: 100%;
     height: 205px;

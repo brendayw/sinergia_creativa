@@ -41,6 +41,8 @@ document.getElementById('precioProducto').addEventListener('input', actualizarDa
 document.getElementById('comision').addEventListener('change', actualizarDatos);
 
 /* PANEL DERECHO - METAS MENSUALES */
+let totalProductosGlobal = 0;
+
 function calcularVentasMensuales() {
     const ingresos = parseFloat(document.getElementById("ingresos").value.replace(/\./g, "").replace(/,/g, ".")) || 0;
     const valorUsd = parseFloat(document.getElementById("valorUSD").value.replace(/\./g, "").replace(/,/g, ".")) || 1;
@@ -50,8 +52,6 @@ function calcularVentasMensuales() {
         10: 10,
         15: 6.6,
         20: 5,
-        25: 4,
-        30: 3.3,
         35: 2.85,
         40: 1.8
     };
@@ -75,6 +75,8 @@ function calcularVentasMensuales() {
     const resultadoSeleccionado = resultados.find(r => r.valorComision == comisionSeleccionada);
 
     if (resultadoSeleccionado) {
+        totalProductosGlobal = resultadoSeleccionado.totalProductos;
+
         document.getElementById("ventasMes").textContent = `$ ${resultadoSeleccionado.debeVender.toLocaleString("es-ES", { minimumFractionDigits: 0 })}`;
         document.getElementById("volumenUSD").textContent = `${resultadoSeleccionado.volumenUSD.toFixed(0)} USD`;
         document.getElementById("totalProductos").textContent = resultadoSeleccionado.totalProductos.toFixed(0);
@@ -120,14 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const resultadoPlan = [];
         for (let valorComision in tasasDeCierre) {
             const tasa = tasasDeCierre[valorComision];
-            // const datosProspectar = totalVentas * 6;
-            const presentacionesPorMes = totalVentas / tasa;
-            const presentacionesPorSemana = (presentacionesPorMes / 4) + 1;
+            const datosProspectar = totalProductosGlobal * 6;
+            const presentacionesPorMes = totalProductosGlobal / tasa;
+            const presentacionesPorSemana = presentacionesPorMes > 0 ? (presentacionesPorMes / 4) + 1 : 0;
 
             resultadoPlan.push({
                 valorComision: valorComision,
-                // datosProspectar: datosProspectar,
-                presentacionesPorMes: Math.floor(presentacionesPorMes),
+                datosProspectar: datosProspectar % 1 >= 0.5 ? Math.ceil(datosProspectar) : Math.floor(datosProspectar),
+                presentacionesPorMes: presentacionesPorMes % 1 >= 0.5 ? Math.ceil(presentacionesPorMes) : Math.floor(presentacionesPorMes),
                 presentacionesPorSemana: Math.floor(presentacionesPorSemana)
             });
         }
@@ -137,8 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (resultadoSeleccionado) {
-            // document.getElementById("datos_prospectar").textContent = datosProspectar;
-            console.log("Resultado Seleccionado:", resultadoSeleccionado);
+            document.getElementById("datos").textContent = `${resultadoSeleccionado.datosProspectar}`;
             document.getElementById("por_mes").textContent = `${resultadoSeleccionado.presentacionesPorMes}`;
             document.getElementById("por_semana").textContent = `${resultadoSeleccionado.presentacionesPorSemana}`;
         } else {

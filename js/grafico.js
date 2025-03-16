@@ -8,7 +8,7 @@ function calcularComision(valorProducto, porcentajeComision) {
 //grafico de comisiones
 function actualizarGrafico() {
     const valorProducto = parseFloat(document.getElementById('precioProducto').value) || 0;
-    const comisiones = [10, 15, 20, 25, 30, 35, 40];
+    const comisiones = [10, 15, 20, 35, 40];
     const comisionesCalculadas = comisiones.map(porcentaje => calcularComision(valorProducto, porcentaje));
 
     if (window.myChart) {
@@ -62,25 +62,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const ventasChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['10%', '15%', '20%', '25%', '30%', '35%', '40%'],
+            labels: ['10%', '15%', '20%', '35%', '40%'],
             datasets: [
                 {
                     label: 'Debe Vender',
-                    data: [0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0],
                     borderColor: 'rgb(255, 99, 133)',
                     fill: false,
                     yAxisID: 'y1'
                 },
                 {
                     label: 'Volumen en USD',
-                    data: [0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0],
                     borderColor: 'rgba(54, 162, 235, 1)',
                     fill: false,
                     yAxisID: 'y2'
                 },
                 {
                     label: 'Ventas del Mes',
-                    data: [0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0],
                     borderColor: 'rgba(255, 206, 86, 1)',
                     fill: false,
                     yAxisID: 'y3'
@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
         console.log("Datos recibidos en el evento 'actualizarGrafico':", resultados);
     
-        if (Array.isArray(resultados) && resultados.length === 7) {
-            ventasChart.data.datasets[0].data = resultados.map(resultado => resultado.debeVender || 0); // debe Vender
+        if (Array.isArray(resultados) && resultados.length === 5) {
+            ventasChart.data.datasets[0].data = resultados.map(resultado => resultado.debeVender || 0); // debe vender
             ventasChart.data.datasets[1].data = resultados.map(resultado => resultado.volumenUSD || 0); // "volumen a sumar"
             ventasChart.data.datasets[2].data = resultados.map(resultado => resultado.totalProductos || 0); // "ventas del mes"
             
