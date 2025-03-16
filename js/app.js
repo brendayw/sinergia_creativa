@@ -96,5 +96,67 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener("input", calcularVentasMensuales);
     });
 
-    document.getElementById("comisionSeleccionada").addEventListener("change", calcularVentasMensuales);
+    document.getElementById("comision").addEventListener("change", calcularVentasMensuales);
 });
+
+/* plan de accion hoy */
+document.addEventListener("DOMContentLoaded", function () {
+    function actualizarPlanAccion() {
+        let totalProductosElement = document.getElementById("totalProductos");
+                
+        if (!totalProductosElement) return;
+
+        let totalVentas = parseInt(totalProductosElement.textContent) || 0;
+        console.log("Total Ventas:", totalVentas);
+
+        const tasasDeCierre = {
+            10: 0.3,
+            15: 0.35,
+            20: 0.5,
+            35: 0.5,
+            40: 0.5
+        };
+
+        const resultadoPlan = [];
+        for (let valorComision in tasasDeCierre) {
+            const tasa = tasasDeCierre[valorComision];
+            // const datosProspectar = totalVentas * 6;
+            const presentacionesPorMes = totalVentas / tasa;
+            const presentacionesPorSemana = (presentacionesPorMes / 4) + 1;
+
+            resultadoPlan.push({
+                valorComision: valorComision,
+                // datosProspectar: datosProspectar,
+                presentacionesPorMes: Math.floor(presentacionesPorMes),
+                presentacionesPorSemana: Math.floor(presentacionesPorSemana)
+            });
+        }
+
+        const comisionSeleccionada = parseInt(document.getElementById("comision").value);
+        const resultadoSeleccionado = resultadoPlan.find(r => r.valorComision == comisionSeleccionada);
+
+
+        if (resultadoSeleccionado) {
+            // document.getElementById("datos_prospectar").textContent = datosProspectar;
+            console.log("Resultado Seleccionado:", resultadoSeleccionado);
+            document.getElementById("por_mes").textContent = `${resultadoSeleccionado.presentacionesPorMes}`;
+            document.getElementById("por_semana").textContent = `${resultadoSeleccionado.presentacionesPorSemana}`;
+        } else {
+            console.error('No se encontró un resultado para la comisión seleccionada');
+        }
+    }
+
+    let observer = new MutationObserver(actualizarPlanAccion);
+    let totalProductosElement = document.getElementById("totalProductos");
+
+    if (totalProductosElement) {
+        observer.observe(totalProductosElement, { childList: true, subtree: true });
+    }
+
+    actualizarPlanAccion();
+});
+
+
+
+
+
