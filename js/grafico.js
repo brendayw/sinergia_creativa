@@ -1,59 +1,69 @@
-const cte = document.getElementById('comisionesChart').getContext('2d');
+/*grafico de ganancias*/
+document.addEventListener('DOMContentLoaded', function () {
+    const cte = document.getElementById('comisionesChart').getContext('2d');
+    
+    let valorProducto = 0;  
+    let comisionSeleccionada = 10;
 
-function calcularComision(valorProducto, porcentajeComision) {
-    let valorNeto = valorProducto / 1.21;
-    return valorNeto * (porcentajeComision / 100);
-}
+    document.addEventListener('actualizarGrafico', function(event) {
+        const { valorProducto: nuevoValorProducto, comision: nuevaComision } = event.detail;
+        valorProducto = nuevoValorProducto;
+        comisionSeleccionada = nuevaComision;
 
-//grafico de comisiones
-function actualizarGrafico() {
-    const valorProducto = parseFloat(document.getElementById('precioProducto').value) || 0;
-    const comisiones = [10, 15, 20, 35, 40];
-    const comisionesCalculadas = comisiones.map(porcentaje => calcularComision(valorProducto, porcentaje));
+        actualizarGrafico(); 
+    });
 
-    if (window.myChart) {
-        window.myChart.destroy();
+    function calcularComision(valorProducto, porcentajeComision) {
+        let valorNeto = valorProducto / 1.21;
+        return valorNeto * (porcentajeComision / 100);
     }
 
-    window.myChart = new Chart(cte, {
-        type: 'bar',
-        data: {
-            labels: comisiones.map(porcentaje => `${porcentaje}%`),
-            datasets: [{
-                label: 'Comisión sobre el Producto',
-                data: comisionesCalculadas,
-                backgroundColor: '#f74b94',
-                borderColor: '#f74b94',
-                borderRadius: 20, 
-                barThickness: 20,
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    grid: {
-                        display: false,
-                        drawBorder: false,
+    function actualizarGrafico() {
+        const comisiones = [10, 15, 20, 35, 40];
+        const comisionesCalculadas = comisiones.map(porcentaje => calcularComision(valorProducto, porcentaje));
+
+        if (window.myChart) {
+            window.myChart.destroy();
+        }
+
+        window.myChart = new Chart(cte, {
+            type: 'bar',
+            data: {
+                labels: comisiones.map(porcentaje => `${porcentaje}%`),
+                datasets: [{
+                    label: 'Ganancia neta sobre el producto',
+                    data: comisionesCalculadas,
+                    backgroundColor: '#f74b94',
+                    borderColor: '#f74b94',
+                    borderRadius: 20, 
+                    barThickness: 20,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        max: 10
                     },
-                    max: 10
-                },
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        display: false,
-                        drawBorder: false,
-                    },
-                    ticks: {
-                        display: false,
-                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            display: false,
+                        },
+                    }
                 }
             }
-        }
-    });
-}
+        });
+    }
+});
 
-document.getElementById('precioProducto').addEventListener('input', actualizarDatos);
-document.getElementById('comision').addEventListener('change', actualizarDatos);
 
 // grafico de objetivos
 document.addEventListener('DOMContentLoaded', function () {
