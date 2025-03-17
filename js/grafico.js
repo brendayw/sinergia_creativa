@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 // grafico de objetivos
 document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('ventasChart').getContext('2d');
@@ -170,14 +169,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 });
-
-
-
-
-
-
-
-
-
-
-

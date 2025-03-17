@@ -127,8 +127,10 @@ function calcularVentasMensuales() {
     const event = new CustomEvent('actualizarGrafico', {
         detail: {
             valorProducto: valorProducto,
-            comision: comisionSeleccionada
+            comision: comisionSeleccionada,
+            resultados: resultados
         }
+        
     });
     document.dispatchEvent(event);
 }
@@ -197,8 +199,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     actualizarPlanAccion();
 });
-
-
-
-
-
