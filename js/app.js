@@ -15,6 +15,13 @@ enlacesMenu.forEach(enlace => {
     });
 });
 
+function enviarDatosAlGrafico(valorProducto, comision) {
+    const event = new CustomEvent('actualizarGrafico', {
+        detail: { valorProducto, comision }
+    });
+    document.dispatchEvent(event);
+}
+
 /* simulador de ventas personal */
 const productoSelected = document.getElementById('producto');
 const precioProducto = document.getElementById('precioProducto');
@@ -58,7 +65,7 @@ function actualizarDatos() {
 
     if (!isNaN(gananciaNeta)) {
         localStorage.setItem('gananciaNeta', gananciaNeta.toFixed(0));
-        document.getElementById('gananciaNeta').innerText = `${gananciaNeta.toFixed(0)}`;
+        document.getElementById('gananciaNeta').innerText = `${gananciaNeta.toLocaleString("es-ES")}`;
         console.log('la ganancia: ' + gananciaNeta);
     } else {
         console.error('El cálculo de la ganancia neta falló. Revise los valores.');
@@ -71,13 +78,6 @@ function calcularGananciaNeta(valorProducto, porcentajeComision) {
     let valorNeto = valorProducto / 1.21;
     let comision = valorNeto * (porcentajeComision / 100);
     return parseFloat(comision.toFixed(0));
-}
-
-function enviarDatosAlGrafico(valorProducto, comision) {
-    const event = new CustomEvent('actualizarGrafico', {
-        detail: { valorProducto, comision }
-    });
-    document.dispatchEvent(event);
 }
 
 /* PANEL DERECHO - METAS MENSUALES */
@@ -126,7 +126,8 @@ function calcularVentasMensuales() {
 
     const event = new CustomEvent('actualizarGrafico', {
         detail: {
-            resultados: resultados
+            valorProducto: valorProducto,
+            comision: comisionSeleccionada
         }
     });
     document.dispatchEvent(event);
