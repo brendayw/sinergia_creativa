@@ -1193,7 +1193,7 @@ a {
 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .toggle-panel-derecho {
         display: none; /* El botón no se mostrará en pantallas grandes */
     }
@@ -1201,6 +1201,39 @@ a {
     .panel-derecho {
         right: 0; /* El panel derecho siempre visible en escritorio */
     }
+}
+
+@media (max-width: 480px) {
+    .datos-ticket {
+        margin-left: -85px;
+    }
+
+    .contenedor-datos {
+        margin-top: -50px;
+    }
+
+    .ingresos {
+        margin-left: 90px;
+    }
+
+    .toggle-panel-derecho {
+        display: block;
+        position: fixed;
+        top: 350px;
+        right: 60px;
+    }
+
+    .panel-derecho.visible .encabezado-datos-socio {
+        margin-left: 270px;
+    }
+
+    .panel-derecho.visible .icon-paid {
+        left: 30px;
+    }
+
+
+
+
 }
 
 @media (min-width: 320px) {
