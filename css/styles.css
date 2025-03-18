@@ -928,12 +928,20 @@ a {
 
     .promedio input, 
     .valor input {
-        width: 100px;
+        width: 150px;
         height: 25px;
         font-size: 7px;
         padding-left: 5px;
         margin-left: 0px;
         justify-content: center;
+    }
+
+    #ticketPromedio {
+        margin-left: 20px;
+    }
+
+    #valorUSD {
+        margin-left: 80px;
     }
 
     /*contenedor de datos*/
@@ -1009,6 +1017,7 @@ a {
     }
 
     .ingresos {
+        width: 85%;
         margin: 0 30px;
         gap: 5px;
     }
@@ -1072,7 +1081,7 @@ a {
     }
 
     .panel-derecho.visible .ganancia .icon-paid {
-        margin-left: 70px;
+        left: 195px;
         padding: 0.3rem;
         margin-top: -2px;
         font-size: 35px;
@@ -1169,6 +1178,7 @@ a {
 
     .panel-derecho.visible  .days {
         font-size: 0.7rem;
+        margin-left: 35px;
     }
 
     .toggle-panel-derecho {
@@ -1193,27 +1203,39 @@ a {
 
 }
 
-@media (max-width: 768px) {
+/* 
+@media (min-width: 720px) {
+    .datos-ticket {
+        margin-left: -100px;
+    }
+
+    .promedio input, .valor input {
+        width: 150px;
+    }
+
+    #ticketPromedio {
+        margin-left: 20px;
+    }
+    #valorUSD {
+        margin-left: 80px;
+    }
+
+    
+
     .toggle-panel-derecho {
-        display: none; /* El botón no se mostrará en pantallas grandes */
+        display: block;
+        position: fixed;
+        top: 350px;
+        right: 60px;
+        font-size: 25px;
+        cursor: pointer;
+        z-index: 1000;
     }
+} */
 
-    .panel-derecho {
-        right: 0; /* El panel derecho siempre visible en escritorio */
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 420px) {
     .datos-ticket {
         margin-left: -85px;
-    }
-
-    .contenedor-datos {
-        margin-top: -50px;
-    }
-
-    .ingresos {
-        margin-left: 90px;
     }
 
     .toggle-panel-derecho {
@@ -1222,28 +1244,35 @@ a {
         top: 350px;
         right: 60px;
     }
-
+    .ingresos {
+        width: 80%;
+        padding-right: 20px;
+    }
     .panel-derecho.visible .encabezado-datos-socio {
-        margin-left: 270px;
+        margin-left: 250px;
     }
 
     .panel-derecho.visible .icon-paid {
-        left: 30px;
+        left: 55px;
     }
-
-
-
-
 }
 
 @media (min-width: 320px) {
     .tickets {
-        margin-left: -15px;
+        margin-left: -5px;
+    }
+
+    .contenedor-datos {
+        margin-top: 10px;
     }
 
     .simulador, .objetivos {
         margin-left: -10px;
         width: 100%;
+    }
+
+    .ingresos {
+        margin-left: 40px;
     }
 
     .toggle-panel-derecho {
@@ -1255,7 +1284,7 @@ a {
     }
 
     .panel-derecho.visible .ganancia .icon-paid {
-        margin-left: 50px;
+        margin-left: 10px;
     }
 
     .panel-derecho.visible .meta-ventas {
