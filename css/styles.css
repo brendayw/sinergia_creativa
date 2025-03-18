@@ -1203,7 +1203,7 @@ a {
     }
 }
 
-@media (min-width: 300px) {
+@media (min-width: 320px) {
     .tickets {
         margin-left: -15px;
     }
@@ -1222,7 +1222,7 @@ a {
     }
 
     .panel-derecho.visible .ganancia .icon-paid {
-        margin-left: 30px;
+        margin-left: 50px;
     }
 
     .panel-derecho.visible .meta-ventas {
