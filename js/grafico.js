@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y1: {
                     type: 'linear',
@@ -169,3 +170,76 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 });
+
+//-----------------------------------------
+const ctx = document.getElementById('myChart').getContext('2d');
+
+let myChart = new Chart(ctx, {
+    type: 'line', // Tipo de gráfico
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My Dataset',
+            data: [10, 20, 15, 30, 25, 35, 40],
+            borderColor: 'rgb(75, 192, 192)',
+            fill: false,
+            tension: 0.1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 12 // Tamaño inicial de los labels
+                    },
+                    autoSkip: false // Esto hará que los labels no se salten, se muestran todos
+                }
+            },
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                enabled: true,
+            }
+        }
+    }
+});
+
+// Función para actualizar las opciones del gráfico según el tamaño de la ventana
+function updateChartForScreenSize() {
+    const width = window.innerWidth;
+
+    // Si la ventana tiene un ancho menor o igual a 768px (pantalla pequeña)
+    if (width <= 768) {
+        // Cambiar la disposición de los labels en el eje X para que estén en una sola fila
+        myChart.options.scales.x.ticks.autoSkip = true; // Permite que los labels se ajusten mejor
+
+        // Cambiar el tamaño de la fuente de los labels
+        myChart.options.scales.x.ticks.font.size = 10;
+
+        // Cambiar la orientación de los labels, si se desea en una sola fila
+        myChart.options.scales.x.ticks.minRotation = 0;  // Asegura que los labels estén en una sola fila (sin rotar)
+    } else {
+        // Si la ventana tiene un ancho mayor que 768px (pantalla grande)
+        myChart.options.scales.x.ticks.autoSkip = false; // Los labels no se saltan
+        myChart.options.scales.x.ticks.font.size = 14; // Tamaño de fuente más grande
+        myChart.options.scales.x.ticks.minRotation = 0; // Los labels se mantienen en una sola fila
+    }
+
+    // Vuelve a renderizar el gráfico con las nuevas configuraciones
+    myChart.update();
+}
+
+// Detecta cuando cambia el tamaño de la ventana
+window.addEventListener('resize', updateChartForScreenSize);
+
+// Llama a la función para aplicar las configuraciones iniciales
+updateChartForScreenSize();
