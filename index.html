@@ -33,40 +33,33 @@
                         <span>Inicio</span>
                     </a>
                 </div>
-                
-                <div class="enlace">
-                    <a class="link_menu" href="/pages/calculadora.html">
-                        <i class="material-icons">attach_money</i>
-                        <span>Calculadora </span>
-                    </a>
-                </div>
-        
-                <div class="enlace">
-                    <a class="link_menu" href="/pages/simulador.html">
-                        <i class="material-icons">shopping_cart_checkout</i>
-                        <span>Simulador</span>
-                    </a>
-                </div>
-    
-                <div class="enlace">
-                    <a class="link_menu" href="/pages/planificador.html">
-                        <i class="material-icons">calendar_month</i>
-                        <span>Planificador</span>
-                    </a>
-                </div>
-    
+
                 <div class="enlace">
                     <a class="link_menu" href="/pages/perfil.html">
                         <i class="material-icons">person</i>
                         <span>Perfil</span>
                     </a>
                 </div>
-            
+                
                 <div class="enlace">
-                    <button id="logout" class="link_menu">
+                    <a class="link_menu" href="#">
+                        <i class="material-icons">podcasts</i>
+                        <span>Podcast</span>
+                    </a>
+                </div>
+        
+                <div class="enlace">
+                    <a class="link_menu" href="#">
+                        <i class="material-icons">eventt</i>
+                        <span>Eventos</span>
+                    </a>
+                </div>
+                
+                <div class="enlace">
+                    <a id="logout" class="link_menu" href="#">
                         <i class="material-icons">logout</i>
                         <span>Salir</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -77,7 +70,7 @@
                 <div class="contenedor-datos-socio">
                     <div class="datos-socio">
                         <div class="dato">
-                            <span class="label">Hola, </span>
+                            <span class="label">Hola,</span>
                             <!-- el nombre debe depender del backend -->
                             <span class="valor">Martin Rodriguez</span>
                             <p>¡Bienvenido a tu asistente de metas mensuales!</h4></p>
@@ -172,6 +165,7 @@
                     
                 </div>
             </div>
+
             <div class="capacitacion">
                 <div class="titulo">
                     <p class="info">Capacitación Mínima Sugerida entre Campus Virtual y Oficina</p>
@@ -180,8 +174,13 @@
             </div>
         </div>
     
+        <div class="toggle-panel-derecho">
+            <i class="material-icons icon-paid">arrow_back_ios</i>
+        </div>
+
         <div class="panel-derecho">  
             <!-- ganancia neta de hoy -->
+            
             <div class="ganancia-hoy">
                 <h4>Ganancia Neta Hoy</h4>
                 <div class="ganancia">
@@ -242,13 +241,7 @@
                     </div>
                 </div>
             </div>
-            <!-- metas de ventas mensual
-                lo que debe vender
-                lo qye sumara
-                total de ventas que debe hacer
-             -->
-            
-
+        
             <div class="calendario_contenedor">
                 <div class="calendario">
                     <div class="calendario_header">
@@ -271,6 +264,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

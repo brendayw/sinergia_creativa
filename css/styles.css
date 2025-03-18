@@ -24,6 +24,7 @@ body {
 /* LAYOUT */
 .container {
     display: flex;
+    flex-direction: row;
     height: 100vh;
 }
 
@@ -37,29 +38,13 @@ body {
     background: var(--secundario);
     padding: 10px;
     transition: max-width .3s ease;
+    z-index: 10;
 }
 
 .top_menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.top_menu .logo {
-    display: flex;
-    align-items: center;
-}
-
-.top_menu  .logo img {
-    width: 30px;
-    transition: width .3s ease;
-}
-
-.top_menu  .logo span {
-    font-size: 15px;
-    margin-left: 20px;
-    display: none;
-    font-weight: bold;
 }
 
 .top_menu  .toggle {
@@ -74,6 +59,18 @@ body {
 .top_menu  .toggle i {
     font-size: 25px;
     color: var(--primario);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo span {
+    font-size: 15px;
+    margin-left: 20px;
+    display: none;
+    font-weight: bold;
 }
 
 /* INPUT BOX */
@@ -136,7 +133,6 @@ body {
     opacity: 0;
     transition: opacity .3s ease;
     margin-left: 50px;
-    
 }
 
 .menu_dashboard.open .menu .enlace {
@@ -178,21 +174,7 @@ body {
     background: transparent;
 }
 
-/*opcion para que se mantenga seleccionado*/
-.menu .enlace.active {
-    background: var(--white);
-    color: var(--text-light);
-    width: 100px;
-}
-
-.menu .enlace.active a {
-    color: var(--text-light);
-}
-.menu .enlace.active i {
-    color: var(--text-light);
-}
-
-button {
+a {
     text-decoration: none;
     border: none;
 }
@@ -207,17 +189,18 @@ button {
     flex-direction: column;
     gap: 20px;
     padding: 10px;
+    z-index: 1;
 }
 
 /* ----------- encabezado de panel y panel-derecho ----------- */
 .encabezado {
-    width: 130%;
+    width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    z-index: 10;
+    z-index: 1000;
 }
 
 /* contenedor con datos del socio y saludo */
@@ -298,14 +281,18 @@ button {
 
 /* ---------- tickets ----------- */
 .tickets {
-    width: 95%;
+    width: 70%;
     height: 40px;
     margin-top: 15px;
-    margin-left: 20px;
+    margin-left: 0;
     padding: 0.3rem;
     display: flex;
     justify-content: center;
     align-items:flex-start;
+}
+
+.mes-actual {
+    padding: 0.3rem;
 }
 
 .mes-actual span,
@@ -314,19 +301,16 @@ button {
     font-size: 14px;
 }
 
-.mes-actual {
-    padding: 0.3rem;
-}
-
 .promedio input,
 .valor input {
     width: 175px;
     height: 30px;
-    box-shadow: 2px 2px 2px var(--quinto);
+    box-shadow: 2px 2px 5px var(--quinto);
     border: none;
     outline: none;
     border-radius: 10px;
     margin-left: 10px;
+    padding-left: 15px;
     font-family: "Montserrat", serif;
 }
 /* ---------- fin tickets ------------ */
@@ -336,29 +320,11 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    width: 77%;
     padding: 10px;
-    height: 500px;
-    overflow-y: auto;
-    white-space: nowrap;
 }
 
-/*scroll bar */
-.contenedor-datos::-webkit-scrollbar {
-    height: 8px;
-}
-
-.contenedor-datos::-webkit-scrollbar-thumb {
-    background: var(--secundario);
-    border-radius: 5px;
-}
-
-.contenedor-datos::-webkit-scrollbar-track {
-    background: var(--terciario);
-}
-/* fin del scroll bar */
-
-/*simulador de ventas*/
+/*simulador de ventas y objetivos*/
 .simulador, .objetivos {
     width: 50%;
     display: flex;
@@ -367,13 +333,13 @@ button {
     align-items: flex-start;
     margin-left: 10px;
     margin-right: 10px;
-    gap: 15px;
+    gap: 12px;
 }
 
 .simulador-ventas, 
 .ganancias-ventas {
     width: 100%;
-    height: 200px;
+    height: 175px;
     border-radius: 15px;
     padding: 10px;
     border: 1px solid var(--quinto);
@@ -385,17 +351,21 @@ button {
 }
 
 .ganancias-ventas {
-    height: 150px;
+    height: 125px;
 }
 
 .titulo-simulador, .titulo-objetivos {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--terciario);
     margin: 0;
-    padding: 0.8rem;
+    padding: 0.5rem;
     text-align: center;
     display: block;
     width: 100%;
+}
+
+.titulo-objetivos {
+    margin-top: -15px;
 }
 
 .comision, .ticket, .precio, 
@@ -403,14 +373,14 @@ button {
 .total-mes {
     display: flex;
     justify-content: left;
-    align-items: left;
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .comision span, .ticket span, .precio span,
 .ingresos span, .a-vender span, .a-sumar span,
 .total-mes span {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     align-items: center;
     color: var(--secundario);
@@ -426,7 +396,7 @@ button {
     outline: none;
     font-family: "Montserrat", serif;
     margin-left: 15px;
-    padding: 8px;
+    padding: 6px;
 }
 
 .precio p {
@@ -494,24 +464,39 @@ button {
     justify-content: space-between;
 }
 
-.titulo .info {
+.titulo .info,
+.titulo .horas {
     font-size: 12px;
     padding: 5px;
     color: var(--secundario);
 }
 
-.titulo .horas {
-    font-size: 12px;
-    color: var(--secundario);
-}
 
 /* ------------ PANEL DERECHO ------------- */
 .panel-derecho {
-    width: 25%;
+    width: 300px;
     height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
+    background-color: var(--blanco);
     box-shadow: 2px 2px 5px var(--primario);
+    padding: 20px;
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.panel-derecho.visible {
+    transform: translateX(0);
+}
+
+.panel-derecho.hidden {
+    transform: translateX(100%);
+}
+
+.toggle-panel-derecho {
+    display: none;
 }
 
 /* ganancia neta hoy */
@@ -788,3 +773,403 @@ button {
 }
 /*fin calendario*/
 
+/* MEDIA QUERYS */
+/* @media (min-width: 768px) {
+    .toggle-panel {
+        display: none;
+    }
+} */
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+    /* ------- menu --------- */
+    .menu_dashboard {
+        max-width: 50px;
+        height: 100vh;
+        background-color: transparent;
+        color: var(--primario);
+        transition: max-width .3s ease;
+    }
+    .top_menu {
+        display: block;
+    }
+
+    .input_search, .menu {
+        display: none;
+    }
+
+    .menu .enlace {
+        display: none;
+    }
+
+    /* Cuando el menú está abierto */
+    .menu_dashboard.open {
+        max-width: 60px;
+        max-height: 100vh;
+        background-color: var(--secundario);
+    }
+
+    .menu_dashboard.open .top_menu .logo {
+        display: none;
+    }
+
+    .menu_dashboard.open .input_search {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu_dashboard.open .input_search i {
+        font-size: 18px;
+
+    }
+
+    .menu_dashboard.open .menu {
+        display: block;
+    }
+
+    .menu_dashboard.open .menu .enlace {
+        display: block;
+        width: 100%;
+        padding: 5px;
+    }
+    .menu_dashboard.open .menu .enlace i {
+        margin-bottom: 25px;
+        padding: 0.2rem;
+    }
+
+    .menu_dashboard.open .menu .enlace span {
+        display: none;
+    }
+
+    .menu .enlace:hover {
+        background: #666c75;
+    }
+
+    .link_menu {
+        text-decoration: none;
+        color: inherit;
+        background: transparent;
+    }
+
+    .menu .enlace .link_menu i {
+        font-size: 25px;
+    }
+    /*panel*/
+    .panel {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    /*encabezado */
+    .encabezado {
+        flex-direction: column-reverse;
+        width: 100%;
+        height: 120px;
+        padding: 2px;
+        z-index: 10;
+    }
+
+    .contenedor-datos-socio {
+        width: 90%;
+        height: 70px;
+        margin-bottom: 2px;
+    }
+
+    .contenedor-datos-socio img {
+        width: 80px;
+        height: 80px;
+        padding: 1px;
+    }
+
+    .dato span {
+        font-size: 10px;
+    }
+
+    .dato p {
+        font-size: 9px;
+    }
+
+    .encabezado-datos-socio {
+        width: 25%;
+        display: flex;
+        margin-top: 5px;
+        margin-left: 200px;
+    }
+
+    /* tickets */
+    .tickets {
+        width: 100%;
+        height: 125px;
+        margin-top: -20px;
+        margin-left: -30px;
+    }
+
+    .datos-ticket {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .mes-actual, 
+    .promedio, 
+    .valor {
+        padding-left: 0.2rem;
+    }
+
+    .mes-actual span,
+    .promedio span,
+    .valor span {
+        font-size: 10px;
+    }
+
+    .promedio input, 
+    .valor input {
+        width: 85px;
+        height: 25px;
+        font-size: 7px;
+        padding-left: 5px;
+        margin-left: 5px;
+        justify-content: center;
+    }
+
+    /*contenedor de datos*/
+    .contenedor-datos {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .simulador {
+        width: 100%;
+        height: 120px;
+        margin-left: -10px;
+        padding-left: 20px;
+    }
+
+    .simulador-ventas, .ganancias-ventas {
+        padding: 0.2rem;
+        width: 100%;
+    }
+
+    .titulo-simulador {
+        font-size: 0.7rem;
+    }
+
+    .comision, .ticket, .precio {
+        margin-bottom: 8px;
+        margin-left: 10px;
+    }
+
+    .comision span, .ticket span,
+    .precio span {
+        font-size: 10px;
+    }
+
+    .comision select,
+    .ticket select,
+    .ingresos input {
+        padding: 2px;
+        font-size: 9px;
+    }
+
+    .precio p {
+        font-size: 9px;
+    }
+
+    .grafico {
+        width: 100%;
+        height: 150px;
+        box-shadow: 2px 2px 5px var(--primario);
+    }
+
+    #comisionesChart {
+        height: 150px;
+    }
+
+    .objetivos {
+        width: 100%;
+        height: 310px;
+        margin-top: 165px;
+        margin-left: -10px;
+        padding-left: 20px;
+    }
+
+    .ganancias-ventas {
+        height: 90px;
+    }
+
+    .titulo-objetivos {
+        font-size: 0.8rem;
+        margin-top: -5px;
+    }
+
+    .ingresos {
+        margin: 0 30px;
+        gap: 5px;
+    }
+
+    .ingresos span {
+        font-size: 10px;
+    }
+
+    .ingresos input {
+        padding: 2px;
+    }
+
+    .grafico-objetivos {
+        width: 100%;
+        height: auto;
+    }
+
+    /*panel derecho */
+    .panel-derecho {
+        background-color: var(--primario);
+        display: none;
+        right: -300px;
+        width: 100%; 
+    }
+
+    .panel-derecho.visible.panel-derecho.visible {
+        display: block;
+        transform: translateX(0);
+        width: 100%;
+        right: 1px;
+    }
+
+    .panel-derecho.visible .ganancia-hoy {
+        height: 140px;
+    }
+
+    .panel-derecho.visible .ganancia-hoy h4,
+    .panel-derecho.visible .meta-ventas h4,
+    .panel-derecho.visible .plan-accion-hoy h4 {
+        font-size: 20px;
+        color: var(--secundario);
+    }
+
+    .panel-derecho.visible .ganancia {
+        width: 200px;
+        height: 60px;
+    }
+
+    .panel-derecho.visible .ganancia .icon-paid {
+        margin-left: 70px;
+        padding: 0.3rem;
+        margin-top: -2px;
+        font-size: 35px;
+    }
+
+    .panel-derecho.visible .ganancia p {
+        color: var(--terciario);
+        font-size: 20px;
+    }
+    
+    .panel-derecho.visible .meta-ventas {
+        margin-top: 5px;
+        height: 170px;
+    }
+
+    .panel-derecho.visible .metas {
+        display: grid;                   /* Usamos Grid */
+        place-items: center;
+        gap: 15px;
+    }
+
+    .panel-derecho.visible  .meta-vender, 
+    .panel-derecho.visible  .meta-sumara,
+    .panel-derecho.visible  .meta-total-ventas {
+        width: 120px;
+        height: 60px;
+    }
+
+    .panel-derecho.visible  .meta-vender span, 
+    .panel-derecho.visible  .meta-sumara span,
+    .panel-derecho.visible  .meta-total-ventas span {
+        font-size: 12px;
+    }
+
+    .panel-derecho.visible .resultado p {
+        font-size: 16px;
+    }
+
+    .panel-derecho.visible .datos-prospectar span {
+        color: var(--cuaternario);
+        font-size: 14px;
+    }
+
+    .panel-derecho.visible .datos-prospectar p {
+        font-size: 14px;
+    }
+
+    .panel-derecho.visible  .datos-titulo h5 {
+        color: var(--cuaternario);
+        font-size: 14px;
+    }
+
+    .panel-derecho.visible  .datos-mes, 
+    .panel-derecho.visible  .datos-semana {
+        width: 150px;
+        height: 60px;
+    }
+
+    .panel-derecho.visible  .datos span  {
+        font-size: 13px;
+    }
+
+    .panel-derecho.visible  .calendario_contenedor {
+        margin-top: 50px;
+    }
+
+    .panel-derecho.visible  .calendario_btn {
+        font-size: 0.8rem;
+    }
+
+    .panel-derecho.visible  .month_year {
+        font-size: 0.7rem;
+    }
+
+    .panel-derecho.visible  .days_of_week {
+        font-size: 0.6rem; 
+    }
+
+    .panel-derecho.visible  .days {
+        font-size: 0.7rem;
+    }
+
+    .toggle-panel-derecho {
+        display: block;
+        position: fixed;
+        top: 350px;
+        right: 5px;
+        font-size: 25px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .toggle-panel-derecho i {
+        color: var(--secundario);
+    }
+
+
+    /* capacitacion*/
+    .capacitacion {
+        display: none;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .toggle-panel {
+        display: none; /* El botón no se mostrará en pantallas grandes */
+    }
+
+    .panel-derecho {
+        right: 0; /* El panel derecho siempre visible en escritorio */
+    }
+}

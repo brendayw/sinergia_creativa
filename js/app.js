@@ -15,6 +15,16 @@ enlacesMenu.forEach(enlace => {
     });
 });
 
+/*panel derecho version mobile*/
+const togglePanelDerecho = document.querySelector('.toggle-panel-derecho');
+const panelDerecho = document.querySelector('.panel-derecho');
+
+// Añadir un evento de clic al toggle para mostrar/ocultar el panel derecho
+togglePanelDerecho.addEventListener('click', function() {
+    panelDerecho.classList.toggle('hidden');
+    panelDerecho.classList.toggle('visible');
+});
+
 function enviarDatosAlGrafico(valorProducto, comision) {
     const event = new CustomEvent('actualizarGrafico', {
         detail: { valorProducto, comision }
