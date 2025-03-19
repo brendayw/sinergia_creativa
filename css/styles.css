@@ -1781,6 +1781,12 @@ a {
         width: 80%;
     }
 
+    .panel-derecho.visible  .days {
+        font-size: 0.8rem;
+        margin-left: 15px;
+        align-items: center;
+    }
+
     .panel-derecho {
         background-color: var(--primario);
         display: none;
@@ -1788,5 +1794,3 @@ a {
         width: 100%; 
     }
 }
-
-/*(smartphones pequeños): 320px - 375px*/
