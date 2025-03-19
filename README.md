@@ -14,9 +14,13 @@ Simulador de comisiones y planificador de actividad realizado en base a una plan
 El proyecto se compone de los siguientes archivos:
 
   • index.html - Contiene la estructura principal del dashboard.
+  
   • styles.css - Archivo de estilos para el diseño de la plataforma con su correspondiente responsive.
+  
   • app.js - Archivo de JavaScript para funcionalidades interactivas (cálculos y funcionalidades correspondientes botones, entre otros).
+  
   • grafico.js - Contiene el código utilizado para los dos graficos que se muestran en el dashboard
+  
   • calendario.js - Le da funcionalidad al calendario del dashboard
 
 #### Link del deployment
