@@ -1237,6 +1237,7 @@ a {
         font-size: 10px;
     }
 
+    /*panel derecho*/
     .panel-derecho.visible .encabezado-datos-socio {
         width: 25%;
         display: flex;
@@ -1427,3 +1428,175 @@ a {
         width: 80%;
     }
 }
+
+/* (smartphones grandes): 411px - 600px*/
+@media (min-width: 411px) and (max-width: 600px) {
+    /*encabezado*/
+    .dato {
+        font-size: 13px;
+    }
+    
+    /* tickets */
+    .tickets {
+        width: 100%;
+        height: 125px;
+        margin-top: -20px;
+    }
+
+    .datos-ticket {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-left: 30px;
+    }
+
+    #ticketPromedio {
+        margin-left: 10px;
+    }
+
+    #valorUSD {
+        margin-left: 92px;
+    }
+
+    .mes-actual {
+        margin-left: -5px;
+    }
+
+    .promedio input,
+    .valor input {
+        width: 150px;
+        font-size: 11px;
+    }
+
+    /*contenedor de datos*/
+    .contenedor-datos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .simulador {
+        width: 100%;
+        height: 175px;
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+
+    .objetivos {
+        width: 100%;
+        height: 310px;
+        margin-top: 145px;
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+
+    .ingresos {
+        width: 85%;
+        margin: 0 30px;
+        gap: 5px;
+    }
+
+    /*panel derecho*/
+    .panel-derecho.visible {
+        display: block;
+        transform: translateX(0);
+        width: 100%;
+        right: 1px;
+    }
+
+    .panel-derecho.visible .encabezado-datos-socio {
+        width: 10%;
+        display: flex;
+        margin-top: -5px;
+        margin-left: 320px;
+    }
+
+    .panel-derecho.visible .ganancia-hoy {
+        height: 100px;
+        width: 90%;
+        margin-left: 20px;
+        margin-top: -5px;
+    }
+
+    .panel-derecho.visible .ganancia {
+        width: 200px;
+        height: 50px;
+    }
+
+    .panel-derecho.visible .ganancia-hoy h4,
+    .panel-derecho.visible .meta-ventas h4,
+    .panel-derecho.visible .plan-accion-hoy h4 {
+        font-size: 18px;
+        color: var(--secundario);
+    }
+
+    .panel-derecho.visible .ganancia {
+        width: 200px;
+        height: 50px;
+    }
+
+    .panel-derecho.visible .ganancia .icon-paid {
+        left: 25px;
+        padding: 0.3rem;
+        margin-top: 0;
+        font-size: 30px;
+    }
+
+    .panel-derecho.visible .ganancia p {
+        color: var(--terciario);
+        font-size: 20px;
+    }
+
+    .panel-derecho.visible .meta-ventas {
+        margin-top: -5px;
+        height: 180px;
+        width: 90%;
+        margin-left: 30px;
+    }
+
+    .panel-derecho.visible .metas {
+        display: grid;
+        place-items: center;
+        gap: 5px;
+        padding-top: 5px;
+    }
+
+    .panel-derecho.visible  .meta-vender, 
+    .panel-derecho.visible  .meta-sumara,
+    .panel-derecho.visible  .meta-total-ventas {
+        width: 150px;
+        height: 60px;
+    }
+
+    .panel-derecho.visible .plan-accion-hoy {
+        width: 90%;
+        height: 130px;
+        margin-top: 5px;
+        margin-left: 20px;
+    }
+
+    .panel-derecho.visible  .datos-mes, 
+    .panel-derecho.visible  .datos-semana {
+        width: 150px;
+        height: 50px;
+    }
+
+    .panel-derecho.visible  .calendario_contenedor {
+        margin-top: 20px;
+        margin-left: 40px;
+        width: 80%;
+    }
+
+    .panel-derecho {
+        background-color: var(--primario);
+        display: none;
+        right: -300px;
+        width: 100%; 
+    }
+}
+
+/*(smartphones medianos): 375px - 411px*/
+
+/*(smartphones pequeños): 320px - 375px*/
